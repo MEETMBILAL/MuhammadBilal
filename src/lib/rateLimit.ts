@@ -25,15 +25,15 @@ function purgeExpiredRecords(windowMs: number) {
   lastCleanup = now;
 
   const threshold = now - windowMs * 2;
-  for (const [key, record] of inMemoryStore.entries()) {
-    if (record.cooldownUntil && record.cooldownUntil > now) continue;
+  inMemoryStore.forEach((record, key) => {
+    if (record.cooldownUntil && record.cooldownUntil > now) return;
     const activeTimestamps = record.timestamps.filter((ts) => ts > threshold);
     if (activeTimestamps.length === 0) {
       inMemoryStore.delete(key);
     } else {
       record.timestamps = activeTimestamps;
     }
-  }
+  });
 }
 
 export interface RateLimitConfig {
