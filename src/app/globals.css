@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0E0E10;
+  --foreground: #EDEDEB;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar for technical aesthetic */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0E0E10;
+  border-left: 1px solid #1E1E22;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2F2F36;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #50505A;
+}
+
+/* Structural coordinate crosshair styling */
+.hairline-b {
+  border-bottom: 1px solid #1E1E22;
+}
+
+.hairline-r {
+  border-right: 1px solid #1E1E22;
+}
+
+.hairline-l {
+  border-left: 1px solid #1E1E22;
+}
+
+.hairline-t {
+  border-top: 1px solid #1E1E22;
+}
+
+.hairline-all {
+  border: 1px solid #1E1E22;
+}
+
+/* Subtle step transition for simulation tabs */
+.transition-stage {
+  transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
