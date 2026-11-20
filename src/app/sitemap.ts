@@ -1,7 +1,10 @@
 import { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dmbilal.vercel.app";
+  const rawBase = process.env.NEXT_PUBLIC_SITE_URL || "https://dmbilal.vercel.app";
+  const baseUrl = rawBase.startsWith("http://") || rawBase.startsWith("https://")
+    ? rawBase
+    : `https://${rawBase}`;
   const lastModified = new Date();
 
   return [
